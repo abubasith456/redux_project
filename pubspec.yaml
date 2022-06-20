@@ -39,6 +39,7 @@ dependencies:
   redux: ^5.0.0
   http: ^0.13.4
 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -18,3 +18,13 @@ class AppState {
     color = anotherState.color;
   }
 }
+
+class DropDownState {
+  late String color;
+
+  DropDownState({required this.color});
+
+  DropDownState.fromAppState(DropDownState anotherSate) {
+    color = anotherSate.color;
+  }
+}

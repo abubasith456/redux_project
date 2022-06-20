@@ -16,3 +16,13 @@ AppState reducer(AppState prevState, dynamic action) {
 
   return newState;
 }
+
+DropDownState dropDownReducer(DropDownState prevState, dynamic action) {
+  DropDownState newState = DropDownState.fromAppState(prevState);
+
+  if (action is Color) {
+    newState.color = action.color;
+  }
+
+  return newState;
+}

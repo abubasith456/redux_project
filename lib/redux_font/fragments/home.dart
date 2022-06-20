@@ -24,13 +24,16 @@ class HomePage extends StatelessWidget {
                     Text(
                       "Hai, this is sample page for redux. Here i use some diffrent types of styles by using redux method",
                       style: TextStyle(
-                        fontSize: state.fontSize.toDouble(),
-                        fontWeight:
-                            state.isBold ? FontWeight.bold : FontWeight.normal,
-                        fontStyle: state.isItalic
-                            ? FontStyle.italic
-                            : FontStyle.normal,
-                      ),
+                          fontSize: state.fontSize.toDouble(),
+                          fontWeight: state.isBold
+                              ? FontWeight.bold
+                              : FontWeight.normal,
+                          fontStyle: state.isItalic
+                              ? FontStyle.italic
+                              : FontStyle.normal,
+                          color: state.color == 'Yellow'
+                              ? Colors.yellow
+                              : Colors.black),
                     ),
                     const SizedBox(
                       height: 20,
