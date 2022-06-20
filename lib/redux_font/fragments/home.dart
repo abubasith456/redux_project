@@ -7,6 +7,19 @@ import '../navidation_drawer.dart';
 class HomePage extends StatelessWidget {
   static const String routeName = '/homePage';
 
+  Color colors(String name) {
+    if (name == 'Red') {
+      return Colors.red;
+    } else if (name == 'Blue') {
+      return Colors.blue;
+    } else if (name == 'Green') {
+      return Colors.blue;
+    } else if (name == 'Yellow') {
+      return Colors.blue;
+    }
+    return Colors.black;
+  }
+
   @override
   Widget build(BuildContext context) {
     return StoreConnector<AppState, AppState>(
@@ -31,33 +44,11 @@ class HomePage extends StatelessWidget {
                           fontStyle: state.isItalic
                               ? FontStyle.italic
                               : FontStyle.normal,
-                          color: state.color == 'Yellow'
-                              ? Colors.yellow
-                              : Colors.black),
+                          color: colors(state.color)),
                     ),
                     const SizedBox(
                       height: 20,
                     ),
-                    // StoreConnector<AppState, VoidCallback>(
-                    //     builder: (context, callback) {
-                    //   return Material(
-                    //     color: Colors.blue[400],
-                    //     elevation: 5,
-                    //     borderRadius: BorderRadius.circular(30),
-                    //     child: MaterialButton(
-                    //         minWidth: MediaQuery.of(context).size.width,
-                    //         onPressed: () => {
-                    //               FocusManager.instance.primaryFocus?.unfocus(),
-                    //               callback(),
-                    //             },
-                    //         child: const Text(
-                    //           "Login",
-                    //           style: TextStyle(color: Colors.white),
-                    //         )),
-                    //   );
-                    // }, converter: (store) {
-                    //   return () => {store.dispatch(login())};
-                    // }),
                   ],
                 ),
               ));
