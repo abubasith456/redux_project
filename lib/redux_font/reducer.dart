@@ -10,6 +10,8 @@ AppState reducer(AppState prevState, dynamic action) {
     newState.isBold = action.isBold;
   } else if (action is Italic) {
     newState.isItalic = action.isItalic;
+  } else if (action is Color) {
+    newState.color = action.color;
   }
 
   return newState;

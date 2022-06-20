@@ -13,3 +13,8 @@ class Italic {
   bool isItalic;
   Italic(this.isItalic);
 }
+
+class Color {
+  String color;
+  Color(this.color);
+}

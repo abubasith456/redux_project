@@ -7,6 +7,14 @@ import '../navidation_drawer.dart';
 class SettingPage extends StatelessWidget {
   static const String routeName = '/eventPage';
 
+  var items = [
+    'Blue',
+    'Green',
+    'Red',
+    'Yellow',
+    'Orange',
+  ];
+
   @override
   Widget build(BuildContext context) {
     int _value = 10;
@@ -71,6 +79,23 @@ class SettingPage extends StatelessWidget {
                         },
                       ),
                       const Text("Italic")
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                Container(
+                  child: Column(
+                    children: [
+                      DropdownButton(
+                          items: items.map((String? value) {
+                            return DropdownMenuItem(
+                              child: Text('Items'),
+                              value: value,
+                            );
+                          }).toList(),
+                          onChanged: (value) => {})
                     ],
                   ),
                 ),

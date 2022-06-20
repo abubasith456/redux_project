@@ -3,13 +3,18 @@ class AppState {
   late int fontSize;
   late bool isBold;
   late bool isItalic;
+  late String color;
 
   AppState(
-      {required this.fontSize, this.isBold = false, this.isItalic = false});
+      {required this.fontSize,
+      this.isBold = false,
+      this.isItalic = false,
+      this.color = 'Black'});
 
   AppState.fromAppState(AppState anotherState) {
     fontSize = anotherState.fontSize;
     isBold = anotherState.isBold;
     isItalic = anotherState.isItalic;
+    color = anotherState.color;
   }
 }
