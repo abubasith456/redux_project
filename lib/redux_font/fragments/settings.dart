@@ -3,14 +3,15 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_project/redux_font/action.dart';
 import 'package:redux_project/redux_font/app_state.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../navidation_drawer.dart';
 import '../reducer.dart';
 
 class SettingPage extends StatelessWidget {
   static const String routeName = '/eventPage';
 
-  var store = Store<DropDownState>(dropDownReducer,
-      initialState: DropDownState(color: 'Black'));
+  // var store = Store<DropDownState>(dropDownReducer,
+  //     initialState: DropDownState(color: 'Black'));
 
   var selectedValue = 'Black';
   var items = [
@@ -21,6 +22,11 @@ class SettingPage extends StatelessWidget {
     'Orange',
     'Black',
   ];
+
+  Future<SharedPreferences> saveData() async {
+    final prefs = await SharedPreferences.getInstance();
+    return prefs;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +85,7 @@ class SettingPage extends StatelessWidget {
                           ),
                           const Text(
                             "Bold",
-                            style: TextStyle(fontWeight: FontWeight.bold),
+                            // style: TextStyle(fontWeight: FontWeight.bold),
                           )
                         ],
                       ),
@@ -99,7 +105,7 @@ class SettingPage extends StatelessWidget {
                           ),
                           const Text(
                             "Italic",
-                            style: TextStyle(fontWeight: FontWeight.bold),
+                            // style: TextStyle(fontWeight: FontWeight.bold),
                           )
                         ],
                       ),
@@ -111,36 +117,56 @@ class SettingPage extends StatelessWidget {
                       'Text color:',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
-                    StoreProvider<DropDownState>(
-                      store: store,
-                      child: Container(
-                        alignment: Alignment.center,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const SizedBox(
-                              width: 10,
-                            ),
-                            DropdownButton<String>(
-                              items: items.map((String value) {
-                                return DropdownMenuItem<String>(
-                                  value: value,
-                                  child: SizedBox(
-                                      width: MediaQuery.of(context).size.width -
-                                          80,
-                                      child: Text(value)),
-                                );
-                              }).toList(),
-                              onChanged: (value) {
-                                StoreProvider.of<AppState>(context)
-                                    .dispatch(Color(value!));
-                              },
-                              value: state.color,
-                            ),
-                          ],
-                        ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Container(
+                      padding: EdgeInsets.all(10),
+                      width: MediaQuery.of(context).size.width,
+                      child: DropdownButton<String>(
+                        items: items.map((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                        onChanged: (value) {
+                          StoreProvider.of<AppState>(context)
+                              .dispatch(Color(value!));
+                        },
+                        value: state.color,
                       ),
                     ),
+                    // StoreProvider<DropDownState>(
+                    //   store: store,
+                    //   child: Container(
+                    //     alignment: Alignment.center,
+                    //     child: Column(
+                    //       crossAxisAlignment: CrossAxisAlignment.start,
+                    //       children: [
+                    //         const SizedBox(
+                    //           width: 10,
+                    //         ),
+                    //         DropdownButton<String>(
+                    //           items: items.map((String value) {
+                    //             return DropdownMenuItem<String>(
+                    //               value: value,
+                    //               child: SizedBox(
+                    //                   width: MediaQuery.of(context).size.width -
+                    //                       80,
+                    //                   child: Text(value)),
+                    //             );
+                    //           }).toList(),
+                    //           onChanged: (value) {
+                    //             StoreProvider.of<AppState>(context)
+                    //                 .dispatch(Color(value!));
+                    //           },
+                    //           value: state.color,
+                    //         ),
+                    //       ],
+                    //     ),
+                    //   ),
+                    // ),
                   ]),
             ),
           );

@@ -12,17 +12,19 @@ AppState reducer(AppState prevState, dynamic action) {
     newState.isItalic = action.isItalic;
   } else if (action is Color) {
     newState.color = action.color;
+  } else if (action is GetJsonData) {
+    newState.users = action.users;
   }
 
   return newState;
 }
 
-DropDownState dropDownReducer(DropDownState prevState, dynamic action) {
-  DropDownState newState = DropDownState.fromAppState(prevState);
+// DropDownState dropDownReducer(DropDownState prevState, dynamic action) {
+//   DropDownState newState = DropDownState.fromAppState(prevState);
 
-  if (action is Color) {
-    newState.color = action.color;
-  }
+//   if (action is Color) {
+//     newState.color = action.color;
+//   }
 
-  return newState;
-}
+//   return newState;
+// }

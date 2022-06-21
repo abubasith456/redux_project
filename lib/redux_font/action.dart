@@ -1,3 +1,13 @@
+import 'package:redux_project/redux_font/login_response/login_response.dart';
+
+import 'model/usermode.dart';
+
+class GetJsonData {
+  List<Users> users;
+  // Users users;
+  GetJsonData(this.users);
+}
+
 class FontSize {
   int fontSize;
 
